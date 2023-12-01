@@ -259,6 +259,86 @@
 			"response": []
 		},
 		{
+			"name": "change_task_admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "121178ff-8c90-4ece-a66c-c4214ef34554",
+						"exec": [
+							"// Проверка статуса ответа",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"try {",
+							"    // Попытка парсинга JSON и вывод в консоль",
+							"    const response = pm.response.json();",
+							"    console.log(\"Response Body:\", response);",
+							"",
+							"    // Ваш дополнительный код для проверок",
+							"    pm.test(\"Your Additional Test\", () => {",
+							"        // Ваш код проверки тела ответа",
+							"    });",
+							"} catch (error) {",
+							"    console.error(\"Error parsing JSON:\", error);",
+							"    pm.test(\"JSON Parsing Error\", () => {",
+							"        pm.expect.fail(\"Failed to parse JSON\");",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "543976a9-4d38-4d86-8c36-a7e1712ac1d4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenA}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1855,\n    \"text\": \"API\",\n    \"answer\": \"postman\",\n    \"title\": \"***NEW!!!! intagration testing 123425\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/tasks/1855",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"1855"
+					],
+					"query": [
+						{
+							"key": "isSolved",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "create_task_admin_random",
 			"event": [
 				{
@@ -332,86 +412,6 @@
 							"value": "20",
 							"disabled": true
 						},
-						{
-							"key": "isSolved",
-							"value": "true",
-							"disabled": true
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "change_task_admin",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "121178ff-8c90-4ece-a66c-c4214ef34554",
-						"exec": [
-							"// Проверка статуса ответа",
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"try {",
-							"    // Попытка парсинга JSON и вывод в консоль",
-							"    const response = pm.response.json();",
-							"    console.log(\"Response Body:\", response);",
-							"",
-							"    // Ваш дополнительный код для проверок",
-							"    pm.test(\"Your Additional Test\", () => {",
-							"        // Ваш код проверки тела ответа",
-							"    });",
-							"} catch (error) {",
-							"    console.error(\"Error parsing JSON:\", error);",
-							"    pm.test(\"JSON Parsing Error\", () => {",
-							"        pm.expect.fail(\"Failed to parse JSON\");",
-							"    });",
-							"}"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "543976a9-4d38-4d86-8c36-a7e1712ac1d4",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{tokenA}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\": 1855,\n    \"text\": \"API\",\n    \"answer\": \"postman\",\n    \"title\": \"***NEW!!!! intagration testing 123425\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/api/tasks/1855",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"tasks",
-						"1855"
-					],
-					"query": [
 						{
 							"key": "isSolved",
 							"value": "true",
