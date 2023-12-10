@@ -35,4 +35,3 @@ jobs:
          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
          postman login --with-api-key ${{secrets.API_KEY}}
          postman collection run "postman/collections/verifier_tasks.json" -e "verifier.postman_environment.json"
-API_KEY with secrets. in blank.yml · AnzhelikaBcn/qa_auto_4_3@17a2d2c 
