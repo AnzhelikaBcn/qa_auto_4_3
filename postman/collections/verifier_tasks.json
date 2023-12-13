@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "97eac631-2c0f-410c-923f-fa1cee9339ef",
+		"_postman_id": "5b41eddd-b2de-4914-ad68-b550dc20e80f",
 		"name": "verifier_tasks",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "28422607-97eac631-2c0f-410c-923f-fa1cee9339ef"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28422607",
+		"_collection_link": "https://gold-spaceship-869196.postman.co/workspace/f64cc788-2c41-4238-81c9-8dd4d63076ad/collection/28422607-5b41eddd-b2de-4914-ad68-b550dc20e80f?action=share&source=collection_link&creator=28422607"
 	},
 	"item": [
 		{
@@ -12,7 +13,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "43952016-16ec-4f43-a7a3-fcec43f43c59",
 						"exec": [
 							"// Проверка статуса ответа",
 							"pm.test(\"Status code is 201\", function () {",
@@ -39,20 +39,12 @@
 					}
 				}
 			],
-			"id": "d7ed3d23-2b4f-4cb7-a8eb-16e10c479135",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{tokenA}}",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "{{tokenA}}"
+					}
 				},
 				"method": "POST",
 				"header": [],
@@ -91,7 +83,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "33910d71-79cd-4329-8576-da5e5b9d0efa",
 						"exec": [
 							"// Проверка статуса ответа",
 							"pm.test(\"Status code is 200\", function () {",
@@ -118,20 +109,15 @@
 					}
 				}
 			],
-			"id": "fe3ae10f-9e1d-46ec-bbfd-a796ed695cfd",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{tokenA}}",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "{{tokenA}}"
+					}
 				},
 				"method": "GET",
 				"header": [],
@@ -178,7 +164,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "29edc594-cfb5-4dc8-beef-ce4b8866f448",
 						"exec": [
 							"// Проверка статуса ответа",
 							"pm.test(\"Status code is 200\", function () {",
@@ -206,20 +191,15 @@
 					}
 				}
 			],
-			"id": "984c5824-8dee-41e0-acbf-7907dd0a581b",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{tokenA}}",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "{{tokenA}}"
+					}
 				},
 				"method": "GET",
 				"header": [],
@@ -259,176 +239,11 @@
 			"response": []
 		},
 		{
-			"name": "change_task_admin",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "121178ff-8c90-4ece-a66c-c4214ef34554",
-						"exec": [
-							"// Проверка статуса ответа",
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"try {",
-							"    // Попытка парсинга JSON и вывод в консоль",
-							"    const response = pm.response.json();",
-							"    console.log(\"Response Body:\", response);",
-							"",
-							"    // Ваш дополнительный код для проверок",
-							"    pm.test(\"Your Additional Test\", () => {",
-							"        // Ваш код проверки тела ответа",
-							"    });",
-							"} catch (error) {",
-							"    console.error(\"Error parsing JSON:\", error);",
-							"    pm.test(\"JSON Parsing Error\", () => {",
-							"        pm.expect.fail(\"Failed to parse JSON\");",
-							"    });",
-							"}"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "543976a9-4d38-4d86-8c36-a7e1712ac1d4",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{tokenA}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\": 1855,\n    \"text\": \"API\",\n    \"answer\": \"postman\",\n    \"title\": \"***NEW!!!! intagration testing 123425\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/api/tasks/1855",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"tasks",
-						"1855"
-					],
-					"query": [
-						{
-							"key": "isSolved",
-							"value": "true",
-							"disabled": true
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "create_task_admin_random",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "a71ce89d-1a92-4e42-8ab0-85c7d099c595",
-						"exec": [
-							"// Проверка статуса ответа",
-							"pm.test(\"Status code is 201\", function () {",
-							"    pm.response.to.have.status(201);",
-							"});",
-							"",
-							"try {",
-							"    // Попытка парсинга JSON и вывод в консоль",
-							"    const response = pm.response.json();",
-							"    console.log(\"Response Body:\", response);",
-							"",
-							"    // Ваш дополнительный код для проверок",
-							"    pm.test(\"Your Additional Test\", () => {",
-							"        // Ваш код проверки тела ответа",
-							"    });",
-							"} catch (error) {",
-							"    console.error(\"Error parsing JSON:\", error);",
-							"    pm.test(\"JSON Parsing Error\", () => {",
-							"        pm.expect.fail(\"Failed to parse JSON\");",
-							"    });",
-							"}"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "5f2a3769-adec-498f-8e1b-372a19cd2381",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcwMTUyNDIzOCwiYXV0aCI6IlJPTEVfQURNSU4iLCJpYXQiOjE3MDE0Mzc4Mzh9.MbpII2RjoefP8P3YqnjA58gJWXWRqvBIdJKsg2juEK2XIibFh_DwUhcnzBgIBoV1UPu7dxJ58__MYbgGPph38Q",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\": null,\n    \"text\": \"{{$randomAbbreviation}}\",\n    \"answer\": \"{{$randomAbbreviation}}\",\n    \"title\": \"{{$randomAbbreviation}}\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/api/tasks",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"tasks"
-					],
-					"query": [
-						{
-							"key": "size",
-							"value": "20",
-							"disabled": true
-						},
-						{
-							"key": "isSolved",
-							"value": "true",
-							"disabled": true
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "delete_task_admin",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "7ae6d7fc-3059-4165-9a39-e003e12fe515",
 						"exec": [
 							"// Проверка статуса ответа",
 							"pm.test(\"Status code is 204\", function () {",
@@ -441,20 +256,12 @@
 					}
 				}
 			],
-			"id": "8f61683f-2ff3-452d-b65a-2d93b1aaf1a5",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{tokenA}}",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "{{tokenA}}"
+					}
 				},
 				"method": "DELETE",
 				"header": [],
@@ -467,17 +274,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{url}}/api/user-tasks/1602",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"user-tasks",
-						"1602"
-					]
-				}
+				"url": "{{url}}/api/user-tasks/1602"
 			},
 			"response": []
 		}
